@@ -34,7 +34,7 @@ const addNoteHandler = (request, h) => {
 
   const response = h.response({
     status: "fail",
-    message: "Catatan gagal ditambahkan",
+    message: "Failed to add new note",
   });
 
   response.code(500);
@@ -63,7 +63,7 @@ const getNoteByIdHandler = (request, h) => {
 
   const response = h.response({
     status: "fail",
-    message: " Catatan tidak ditemukan",
+    message: " No note has been found",
   });
 
   response.code(404);
@@ -88,7 +88,7 @@ const editNoteByIdHanlder = (request, h) => {
 
     const response = h.response({
       status: "success",
-      message: "Catatan berhasil diperbarui",
+      message: "Note has been updated",
     });
     response.code(200);
     return response;
@@ -96,7 +96,7 @@ const editNoteByIdHanlder = (request, h) => {
 
   const response = h.response({
     status: "fail",
-    message: "Gagal memperbarui catatan, catatan tidak ditemukan",
+    message: "Failed to update note, note ",
   });
   response.code(404);
   return response;
@@ -116,6 +116,13 @@ const deleteNoteByIdHandler = (request, h) => {
     response.code(200);
     return response;
   }
+
+  const response = h.response({
+    status: "fail",
+    message: "Catatan tidak ditemukan",
+  });
+  response.code(404);
+  return response;
 };
 
 module.exports = {
